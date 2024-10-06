@@ -1,0 +1,589 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Graphs</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">Denver Crime Data</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="graphs.html" class="active">Graphs</a></li>
+						<li><a href="maps.html">Maps</a></li>
+						<li><a href="/logout">Logout</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main" class="wrapper">
+						<div class="inner">
+							<h1 class="major">Graphs</h1>
+							<div class="row gtr-uniform">
+								<div style="width: 50%" class="col-12">
+									<select name="crime-select" id="crime-select">
+										<option selected="true" disabled="disabled">- Type of Crime -</option>
+									</select>
+								</div>
+								<div style="width: 50%" class="col-12">
+									<select name="year-select" id="year-select" disabled="disabled">
+										<option selected="true" disabled="disabled">- Year -</option>
+									</select>
+								</div>
+							</div>
+							<span><div id="chart_div" style="height: 500px"></div></span>
+							<div class="row gtr-uniform">
+								<div style="width: 33%">
+									<b>Public Disorder</b>
+										<ul>
+											<li>damaged-prop-bus</li>
+											<li>criminal-mischief-private</li>
+											<li>criminal-mischief-public</li>
+											<li>criminal-mischief-other</li>
+											<li>criminal-mischief-mtr-veh</li>
+											<li>criminal mischief-keep-a-house-of</li>
+											<li>prostitution-procure-for</li>
+											<li>prostitution-pimping</li>
+											<li>prostitution-engaging-in</li>
+											<li>prostitution</li>
+											<li>prostitution-aiding</li>
+											<li>prostitution-display-for</li>
+											<li>riot-incite</li>
+											<li>riot</li>
+											<li>harassment</li>
+											<li>harassment-dv</li>
+											<li>harassment-obscene</li>
+											<li>harassment-sexual-in-nature</li>
+											<li>disturbing-the-peace</li>
+											<li>curfew</li>
+											<li>loitering</li>
+											<li>public-peace-vagrancy</li>
+											<li>public-peace-other</li>
+											<li>threats-to-injure</li>
+											<li>harassment-stalking-dv</li>
+											<li>threats-city</li>
+										</ul>
+								</div>
+								<div style="width: 33%">
+									<b>Drug & Alcohol</b>
+										<ul>
+											<li>drug-hallucinogen-mfr</li>
+											<li>drug-hallucinogen-sell</li>
+											<li>drug-hallucinogen-possess</li>
+											<li>drug-heroin-sell</li>
+											<li>drug-heroin-possess</li>
+											<li>drug-opium-or-deriv-sell</li>
+											<li>drug-opium-or-deriv-possess</li>
+											<li>drug-cocaine-sell</li>
+											<li>drug-cocaine-possess</li>
+											<li>drug-synth-narcotic-sell</li>
+											<li>drug-synth-narcotic-possess</li>
+											<li>drug-poss-paraphernalia</li>
+											<li>drug-marijuana-sell</li>
+											<li>drug-marijuana-possess</li>
+											<li>drug-marijuana-cultivation</li>
+											<li>drug-methamphetamine-mfr</li>
+											<li>drug-methamphetamine-sell</li>
+											<li>drug-methamphetamine-possess</li>
+											<li>drug-barbiturate-mfr</li>
+											<li>drug-barbiturate-sell</li>
+											<li>drug-barbiturate-possess</li>
+											<li>drug-pcs-other-drug</li>
+											<li>drug-make-sell-other-drug</li>
+											<li>liquor-manufacturing</li>
+											<li>liquor-sell</li>
+											<li>liquor-possession</li>
+											<li>liquor-misrepresent-age-minor</li>
+											<li>liquor-other-viol</li>
+											<li>public-intoxication</li>
+											<li>drug-fraud-to-obtain</li>
+										</ul>
+								</div>
+								<div style="width: 33%">
+									<b>White Collar Crime</b>
+									<ul>
+										<li>gambling-betting-wagering</li>
+										<li>forgery-checks</li>
+										<li>forgery-counterfeit-of-obj</li>
+										<li>altering-vin-number</li>
+										<li>forgery-pass-forged-obj</li>
+										<li>for-pass-counterfeit-obj</li>
+										<li>forgery-posses-forge-device</li>
+										<li>forgery-other</li>
+										<li>drug-forgery-to-obtain</li>
+										<li>theft-confidence-game</li>
+										<li>theft-of-rental-property</li>
+										<li>theft-fail-return-rent-veh</li>
+										<li>fraud-identity-theft</li>
+										<li>fraud-criminal-impersonation</li>
+										<li>fraud-gather-id-info-deception</li>
+										<li>fraud-possess-id-theft-tools</li>
+										<li>impersonation-of-police</li>
+										<li>theft-unauth-use-of-ftd</li>
+										<li>fraud-unauthorized-use-of-ftd</li>
+										<li>fraud-nsf-closed-account</li>
+										<li>fraud-by-telephone</li>
+										<li>fraud-by-wire</li>
+										<li>fraud-by-use-of-computer</li>
+										<li>fraud-other</li>
+										<li>embezzle-bus-property</li>
+										<li>theft-embezzle</li>
+									</ul>
+								</div>
+							</div>
+							<div style="margin-top: 30px" class="row gtr-uniform">
+								<div style="width: 33%">
+									<b>Other Crimes Against Persons</b>
+									<ul>
+										<li>indecent-exposure</li>
+										<li>sex-off-incest-with-adult</li>
+										<li>window-peeping</li>
+										<li>indecent-exposure-to-adult</li>
+										<li>sex-off-other</li>
+										<li>obscene-material-possess</li>
+										<li>obscene-material-mfr</li>
+										<li>other-obscenity-crime</li>
+										<li>sex-aslt-statutory-rape</li>
+										<li>sex-aslt-statutory-rape-pot</li>
+										<li>assault-simple</li>
+										<li>assault-state</li>
+										<li>assault-dv</li>
+										<li>assault-police-simple</li>
+									</ul>
+								</div>
+								<div style="width: 33%">
+									<b>Larceny</b>
+									<ul>
+										<li>theft-pick-pocket</li>
+										<li>theft-purse-snatch-no-force</li>
+										<li>theft-shoplift</li>
+										<li>burglary-vending-machine</li>
+										<li>theft-from-bldg</li>
+										<li>theft-from-yards</li>
+										<li>theft-from-mails</li>
+										<li>larc-from-bank-type-inst</li>
+										<li>theft-other</li>
+										<li>theft-bicycle</li>
+										<li>theft-gas-drive-off</li>
+										<li>theft-of-cable-services</li>
+										<li>failure-to-pay-cab-fare</li>
+										<li>theft-of-meals</li>
+										<li>theft-of-services</li>
+									</ul>
+								</div>
+								<div style="width: 33%">
+									<b>Sexual Assault</b>
+									<ul>
+										<li>sex-aslt-fondle-adult-victim</li>
+										<li>sex-aslt-gun</li>
+										<li>sex-aslt-rape</li>
+										<li>sex-aslt-rape-pot</li>
+										<li>sex-aslt-strong-arm</li>
+										<li>sex-aslt-non-rape</li>
+										<li>sex-aslt-non-rape-pot</li>
+										<li>sex-aslt-sodomy-boy-strng-arm</li>
+										<li>sex-aslt-sodomy-man-strng-arm</li>
+										<li>sex-aslt-sodomy-girl-strg-arm</li>
+										<li>sex-aslt-sodomy-woman-str-arm</li>
+										<li>sex-aslt-w-object</li>
+										<li>sex-aslt-w-object-pot</li>
+									</ul>
+								</div>
+							</div>
+							<div style="margin-top: 30px" class="row gtr-uniform">
+								<div style="width: 33%">
+									<b>Murder</b>
+									<ul>
+										<li>traf-vehicular-homicide</li>
+										<li>homicide-family</li>
+										<li>hom-willful-kill-non-family-gu</li>
+										<li>hom-willful-kill-nonfam-wp</li>
+										<li>homicide-police-by-gun</li>
+										<li>homicide-police-weapon</li>
+										<li>homicide-negligent</li>
+										<li>hom-wilful-kill-gun</li>
+										<li>homicide-other</li>
+									</ul>
+								</div>
+								<div style="width: 33%">
+									<b>Robbery</b>
+									<ul>
+										<li>robbery-business</li>
+										<li>robbery-busn-strong-arm</li>
+										<li>robbery-street-gun</li>
+										<li>robbery-street</li>
+										<li>robbery-street-strong-arm</li>
+										<li>robbery-residence-gun</li>
+										<li>robbery-residence</li>
+										<li>robbery-resd-strong-arm</li>
+										<li>robbery-purse-snatch-w-force</li>
+										<li>robbery-bank</li>
+										<li>robbery-car-jacking</li>
+										<li>robbery-other</li>
+									</ul>
+								</div>
+								<div style="width: 33%">
+									<b>Aggravated Assault</b>
+									<ul>
+										<li>aslt-agg-family-gun</li>
+										<li>aslt-agg-family-weapon</li>
+										<li>agg-aslt-strong-arm-dv</li>
+										<li>aslt-agg-non-family-gun</li>
+										<li>aslt-agg-non-family-weapon</li>
+										<li>agg-aslt-strong-arm-nonfam</li>
+										<li>agg-aslt-gun-other</li>
+										<li>weapon-fire-intp-occ-veh</li>
+										<li>weapon-fire-into-occ-bldg</li>
+										<li>aggravated-assault-dv</li>
+										<li>menacing-felony-w-weap</li>
+										<li>weapon-flourishing</li>
+										<li>agg-aslt-shoot</li>
+									</ul>
+								</div>
+							</div>
+							<div style="margin-top: 30px" class="row gtr-uniform">
+								<div style="width: 33%">
+									<b>Arson</b>
+									<ul>
+										<li>arson-business</li>
+										<li>arson-residence</li>
+										<li>arson-other</li>
+										<li>arson-public-building</li>
+										<li>arson-vehicle</li>
+									</ul>
+								</div>
+								<div style="width: 33%">
+									<b>Burglary</b>
+									<ul>
+										<li>burglary-safe</li>
+										<li>burglary-residence-by-force</li>
+										<li>burg-auto-theft-resd-w-force</li>
+										<li>burglary-business-by-force</li>
+										<li>burg-auto-theft-busn-w-force</li>
+										<li>burglary-residence-no-force</li>
+										<li>burg-autp-theft-resd-no-force</li>
+										<li>burglary-business-no-force</li>
+										<li>burg-auto-theft-busn-no-force</li>
+										<li>burglary-poss-of-tools</li>
+										<li>burglary-other</li>
+									</ul>
+								</div>
+								<div style="width: 33%">
+									<b>Traffic Accident</b>
+									<ul>
+										<li>traffic-accident-hit-and-run</li>
+										<li>traffic-accident-dui-duid</li>
+										<li>traffic-accident</li>
+										<li>traffic-accident-sbi</li>
+										<li>traffic-accident-fatal</li>
+										<li>traffic-accident-police</li>
+									</ul>
+								</div>
+							</div>
+							<div style="margin-top: 30px" class="row gtr-uniform">
+								<div style="width: 33%">
+									<b>Theft from Motor Vehicle</b>
+									<ul>
+										<li>theft-parts-from-vehicle</li>
+										<li>theft-items-from-vehicle</li>
+										<li>theft-vehicle-strip</li>
+									</ul>
+								</div>
+								<div style="width: 33%">
+									<b>Auto Theft</b>
+									<ul>
+										<li>theft-stln-veh-const-eqpt</li>
+										<li>theft-stln-vehicle-trailer</li>
+										<li>theft-of-motor-vehicle</li>
+										<li>theft-of-motor-veh-joy-ride</li>
+									</ul>
+								</div>
+								<div style="width: 33%">
+									<b>All Other Crimes</b>
+									<ul>
+										<li>stolen-property-possession</li>
+										<li>fraud-possess-financial-device</li>
+										<li>sex-off-fail-to-register</li>
+										<li>sex-off-registration-viol</li>
+										<li>...</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Denver Police Department. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+			<script type="text/javascript">
+
+				var dict = {}
+
+				$.get("http://192.168.1.160:8080/data", function(datav, status) {
+					datav = JSON.parse(datav);
+
+					for (let i = 0; i < datav.length; i++) {
+						if (typeof datav[i].reported_date !== 'undefined') {
+							date = datav[i].reported_date.split(" ")[0];
+
+							month = date.split("/")[0];
+							day = date.split("/")[1];
+							year = date.split("/")[2];
+
+							offense_type_id = datav[i].offense_type_id;
+
+							if (typeof dict[offense_type_id] === 'undefined') {
+								dict[offense_type_id] = {}
+							}
+							if (typeof dict[offense_type_id][year] === 'undefined') {
+								dict[offense_type_id][year] = {}
+								dict[offense_type_id][year]["total"] = 0
+							}
+
+							if (isNaN(dict[offense_type_id][year][month])) {
+								dict[offense_type_id][year][month] = 1
+							}
+							else {
+								dict[offense_type_id][year][month]++
+							}
+							dict[offense_type_id][year]["total"]++
+						}
+					}
+
+					$('#crime-select').append($('<option>', {
+							text: "All Crimes"
+						}));
+					for (let k = 0; k < Object.keys(dict).length; k++)
+					{
+						$('#crime-select').append($('<option>', {
+							text: Object.keys(dict)[k]
+						}));
+					}
+				})
+
+				$('#crime-select').on('change', function() {
+
+					var selected_option = $('#crime-select option').filter(':selected').text();
+
+					$('#year-select').attr("disabled", false);
+
+					document.getElementById('year-select').innerText = null;
+
+					$('#year-select').append($('<option>', {
+						selected: true,
+						disabled: true,
+						text: "- Year -"
+					}));
+
+					$('#year-select').append($('<option>', {
+							text: "Total"
+						}));
+
+					var years = [];
+					var is_all_crimes;
+					var sup;
+					if (selected_option === "All Crimes") {
+						is_all_crimes = true;
+						sup = Object.keys(dict).length;
+					}
+					else
+					{
+						is_all_crimes = false;
+						sup = 1;
+						option = selected_option;
+					}
+					for (let j = 0; j < sup; j++) {
+						if (is_all_crimes) {
+							option = Object.keys(dict)[j];
+						}
+						for (let k = 0; k < Object.keys(dict[option]).length; k++)
+						{
+							if (years.includes(Object.keys(dict[option])[k]) === false)
+							{
+								$('#year-select').append($('<option>', {
+									text: Object.keys(dict[option])[k]
+								}));
+								years.push(Object.keys(dict[option])[k]);
+							}
+						}
+					}
+
+				});
+
+				$('#year-select').on('change', function() {
+
+					google.charts.load('current', {packages: ['corechart', 'line']});
+					google.charts.setOnLoadCallback(drawBasic);
+
+					var selected_option = $('#crime-select option').filter(':selected').text();
+					var selected_year = $('#year-select option').filter(':selected').text();
+
+					function drawBasic() {
+						var data = new google.visualization.DataTable();
+						data.addColumn('string', 'Month');
+						data.addColumn('number', 'Crimes');
+
+						var is_all_crimes;
+						var sup;
+						if (selected_option === "All Crimes")
+						{
+							is_all_crimes = true;
+							sup = Object.keys(dict).length;
+						}
+						else
+						{
+							is_all_crimes = false;
+							sup = 1;
+							option = selected_option;
+						}
+
+						if (selected_year === "Total")
+						{
+							years = {};
+							for (let j = 0; j < sup; j++)
+							{
+								if (is_all_crimes)
+								{
+									option = Object.keys(dict)[j];
+								}
+								for (let k = 0; k < Object.keys(dict[option]).length; k++)
+								{
+									year = Object.keys(dict[option])[k];
+									if (year in years)
+									{
+										years[year] += dict[option][year]["total"];
+									}
+									else
+									{
+										years[year] = dict[option][year]["total"];
+									}
+								}
+							}
+							for (let k = 0; k < Object.keys(years).length; k++)
+							{
+								year = Object.keys(years)[k];
+								data.addRow([year, years[year]]);
+							}
+						}
+						else
+						{
+							for (let k = 1; k <= 12; k++)
+							{
+								text = "";
+								switch (k)
+								{
+									case 1:
+										text = "Jan";
+										break;
+									case 2:
+										text = "Feb";
+										break;
+									case 3:
+										text = "Mar";
+										break;
+									case 4:
+										text = "Apr";
+										break;
+									case 5:
+										text = "May";
+										break;
+									case 6:
+										text = "Jun";
+										break;
+									case 7:
+										text = "Jul";
+										break;
+									case 8:
+										text = "Aug";
+										break;
+									case 9:
+										text = "Sep";
+										break;
+									case 10:
+										text = "Oct";
+										break;
+									case 11:
+										text = "Nov";
+										break;
+									case 12:
+										text = "Dec";
+										break;
+									default:
+										text = "err";
+										break;
+								}
+								value = 0;
+								for (let j = 0; j < sup; j++)
+								{
+									if (is_all_crimes)
+									{
+										option = Object.keys(dict)[j];
+									}
+									value += dict[option][selected_year][k]
+								}
+								data.addRow([text, value])
+							}
+						}
+
+						var options = {
+							hAxis: {
+								title: selected_year,
+								textStyle: { color: 'white' },
+								titleTextStyle: { color: 'white' }
+							},
+							vAxis: {
+								minValue: 0,
+								title: 'Number of crimes',
+								textStyle: { color: 'white' },
+								titleTextStyle: { color: 'white' },
+								gridline: { color: 'white' }
+							},
+							backgroundColor: '#312450',
+							legendTextStyle: { color: 'white' },
+							lineWidth: 4,
+							colors: [ '#b74e91' ],
+							curveType: 'function'
+
+						};
+
+						var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+						chart.draw(data, options);
+					}
+				});
+
+			</script>
+
+	</body>
+</html>

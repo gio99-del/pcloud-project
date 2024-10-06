@@ -1,0 +1,605 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Maps</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">Denver Crime Data</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="graphs.html">Graphs</a></li>
+						<li><a href="maps.html" class="active">Maps</a></li>
+						<li><a href="/logout">Logout</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main" class="wrapper">
+						<div class="inner">
+							<h1 class="major">Maps</h1>
+							<div class="row gtr-uniform">
+								<div style="width: 50%" class="col-12">
+									<select name="crime-select" id="crime-select" onchange="updateMap()">
+										<option selected="true" disabled="disabled">- Type of Crime -</option>
+									</select>
+								</div>
+								<div class="row gtr-uniform" style="width: 50%" class="col-12">
+									<h3>From</h3>
+									<input class="input-date" type="date" name="demo-name" id="date-start" value="2018-07-22" min="2018-01-01" max="2022-10-31" onchange="updateMap()"/>
+									<h3>To</h3>
+									<input class="input-date" type="date" name="demo-name" id="date-end" value="2018-07-22" min="2018-01-01" max="2022-10-31" onchange="updateMap()"/>
+								</div>
+							</div>
+							<span class="image fit" style="margin-top: 20px"><div id="maps" style="height: 400px"></div></span>
+							<div class="row gtr-uniform">
+								<div style="width: 33%">
+									<b>Public Disorder</b>
+										<ul>
+											<li>damaged-prop-bus</li>
+											<li>criminal-mischief-private</li>
+											<li>criminal-mischief-public</li>
+											<li>criminal-mischief-other</li>
+											<li>criminal-mischief-mtr-veh</li>
+											<li>criminal mischief-keep-a-house-of</li>
+											<li>prostitution-procure-for</li>
+											<li>prostitution-pimping</li>
+											<li>prostitution-engaging-in</li>
+											<li>prostitution</li>
+											<li>prostitution-aiding</li>
+											<li>prostitution-display-for</li>
+											<li>riot-incite</li>
+											<li>riot</li>
+											<li>harassment</li>
+											<li>harassment-dv</li>
+											<li>harassment-obscene</li>
+											<li>harassment-sexual-in-nature</li>
+											<li>disturbing-the-peace</li>
+											<li>curfew</li>
+											<li>loitering</li>
+											<li>public-peace-vagrancy</li>
+											<li>public-peace-other</li>
+											<li>threats-to-injure</li>
+											<li>harassment-stalking-dv</li>
+											<li>threats-city</li>
+										</ul>
+								</div>
+								<div style="width: 33%">
+									<b>Drug & Alcohol</b>
+										<ul>
+											<li>drug-hallucinogen-mfr</li>
+											<li>drug-hallucinogen-sell</li>
+											<li>drug-hallucinogen-possess</li>
+											<li>drug-heroin-sell</li>
+											<li>drug-heroin-possess</li>
+											<li>drug-opium-or-deriv-sell</li>
+											<li>drug-opium-or-deriv-possess</li>
+											<li>drug-cocaine-sell</li>
+											<li>drug-cocaine-possess</li>
+											<li>drug-synth-narcotic-sell</li>
+											<li>drug-synth-narcotic-possess</li>
+											<li>drug-poss-paraphernalia</li>
+											<li>drug-marijuana-sell</li>
+											<li>drug-marijuana-possess</li>
+											<li>drug-marijuana-cultivation</li>
+											<li>drug-methamphetamine-mfr</li>
+											<li>drug-methamphetamine-sell</li>
+											<li>drug-methamphetamine-possess</li>
+											<li>drug-barbiturate-mfr</li>
+											<li>drug-barbiturate-sell</li>
+											<li>drug-barbiturate-possess</li>
+											<li>drug-pcs-other-drug</li>
+											<li>drug-make-sell-other-drug</li>
+											<li>liquor-manufacturing</li>
+											<li>liquor-sell</li>
+											<li>liquor-possession</li>
+											<li>liquor-misrepresent-age-minor</li>
+											<li>liquor-other-viol</li>
+											<li>public-intoxication</li>
+											<li>drug-fraud-to-obtain</li>
+										</ul>
+								</div>
+								<div style="width: 33%">
+									<b>White Collar Crime</b>
+									<ul>
+										<li>gambling-betting-wagering</li>
+										<li>forgery-checks</li>
+										<li>forgery-counterfeit-of-obj</li>
+										<li>altering-vin-number</li>
+										<li>forgery-pass-forged-obj</li>
+										<li>for-pass-counterfeit-obj</li>
+										<li>forgery-posses-forge-device</li>
+										<li>forgery-other</li>
+										<li>drug-forgery-to-obtain</li>
+										<li>theft-confidence-game</li>
+										<li>theft-of-rental-property</li>
+										<li>theft-fail-return-rent-veh</li>
+										<li>fraud-identity-theft</li>
+										<li>fraud-criminal-impersonation</li>
+										<li>fraud-gather-id-info-deception</li>
+										<li>fraud-possess-id-theft-tools</li>
+										<li>impersonation-of-police</li>
+										<li>theft-unauth-use-of-ftd</li>
+										<li>fraud-unauthorized-use-of-ftd</li>
+										<li>fraud-nsf-closed-account</li>
+										<li>fraud-by-telephone</li>
+										<li>fraud-by-wire</li>
+										<li>fraud-by-use-of-computer</li>
+										<li>fraud-other</li>
+										<li>embezzle-bus-property</li>
+										<li>theft-embezzle</li>
+									</ul>
+								</div>
+							</div>
+							<div style="margin-top: 30px" class="row gtr-uniform">
+								<div style="width: 33%">
+									<b>Other Crimes Against Persons</b>
+									<ul>
+										<li>indecent-exposure</li>
+										<li>sex-off-incest-with-adult</li>
+										<li>window-peeping</li>
+										<li>indecent-exposure-to-adult</li>
+										<li>sex-off-other</li>
+										<li>obscene-material-possess</li>
+										<li>obscene-material-mfr</li>
+										<li>other-obscenity-crime</li>
+										<li>sex-aslt-statutory-rape</li>
+										<li>sex-aslt-statutory-rape-pot</li>
+										<li>assault-simple</li>
+										<li>assault-state</li>
+										<li>assault-dv</li>
+										<li>assault-police-simple</li>
+									</ul>
+								</div>
+								<div style="width: 33%">
+									<b>Larceny</b>
+									<ul>
+										<li>theft-pick-pocket</li>
+										<li>theft-purse-snatch-no-force</li>
+										<li>theft-shoplift</li>
+										<li>burglary-vending-machine</li>
+										<li>theft-from-bldg</li>
+										<li>theft-from-yards</li>
+										<li>theft-from-mails</li>
+										<li>larc-from-bank-type-inst</li>
+										<li>theft-other</li>
+										<li>theft-bicycle</li>
+										<li>theft-gas-drive-off</li>
+										<li>theft-of-cable-services</li>
+										<li>failure-to-pay-cab-fare</li>
+										<li>theft-of-meals</li>
+										<li>theft-of-services</li>
+									</ul>
+								</div>
+								<div style="width: 33%">
+									<b>Sexual Assault</b>
+									<ul>
+										<li>sex-aslt-fondle-adult-victim</li>
+										<li>sex-aslt-gun</li>
+										<li>sex-aslt-rape</li>
+										<li>sex-aslt-rape-pot</li>
+										<li>sex-aslt-strong-arm</li>
+										<li>sex-aslt-non-rape</li>
+										<li>sex-aslt-non-rape-pot</li>
+										<li>sex-aslt-sodomy-boy-strng-arm</li>
+										<li>sex-aslt-sodomy-man-strng-arm</li>
+										<li>sex-aslt-sodomy-girl-strg-arm</li>
+										<li>sex-aslt-sodomy-woman-str-arm</li>
+										<li>sex-aslt-w-object</li>
+										<li>sex-aslt-w-object-pot</li>
+									</ul>
+								</div>
+							</div>
+							<div style="margin-top: 30px" class="row gtr-uniform">
+								<div style="width: 33%">
+									<b>Murder</b>
+									<ul>
+										<li>traf-vehicular-homicide</li>
+										<li>homicide-family</li>
+										<li>hom-willful-kill-non-family-gu</li>
+										<li>hom-willful-kill-nonfam-wp</li>
+										<li>homicide-police-by-gun</li>
+										<li>homicide-police-weapon</li>
+										<li>homicide-negligent</li>
+										<li>hom-wilful-kill-gun</li>
+										<li>homicide-other</li>
+									</ul>
+								</div>
+								<div style="width: 33%">
+									<b>Robbery</b>
+									<ul>
+										<li>robbery-business</li>
+										<li>robbery-busn-strong-arm</li>
+										<li>robbery-street-gun</li>
+										<li>robbery-street</li>
+										<li>robbery-street-strong-arm</li>
+										<li>robbery-residence-gun</li>
+										<li>robbery-residence</li>
+										<li>robbery-resd-strong-arm</li>
+										<li>robbery-purse-snatch-w-force</li>
+										<li>robbery-bank</li>
+										<li>robbery-car-jacking</li>
+										<li>robbery-other</li>
+									</ul>
+								</div>
+								<div style="width: 33%">
+									<b>Aggravated Assault</b>
+									<ul>
+										<li>aslt-agg-family-gun</li>
+										<li>aslt-agg-family-weapon</li>
+										<li>agg-aslt-strong-arm-dv</li>
+										<li>aslt-agg-non-family-gun</li>
+										<li>aslt-agg-non-family-weapon</li>
+										<li>agg-aslt-strong-arm-nonfam</li>
+										<li>agg-aslt-gun-other</li>
+										<li>weapon-fire-intp-occ-veh</li>
+										<li>weapon-fire-into-occ-bldg</li>
+										<li>aggravated-assault-dv</li>
+										<li>menacing-felony-w-weap</li>
+										<li>weapon-flourishing</li>
+										<li>agg-aslt-shoot</li>
+									</ul>
+								</div>
+							</div>
+							<div style="margin-top: 30px" class="row gtr-uniform">
+								<div style="width: 33%">
+									<b>Arson</b>
+									<ul>
+										<li>arson-business</li>
+										<li>arson-residence</li>
+										<li>arson-other</li>
+										<li>arson-public-building</li>
+										<li>arson-vehicle</li>
+									</ul>
+								</div>
+								<div style="width: 33%">
+									<b>Burglary</b>
+									<ul>
+										<li>burglary-safe</li>
+										<li>burglary-residence-by-force</li>
+										<li>burg-auto-theft-resd-w-force</li>
+										<li>burglary-business-by-force</li>
+										<li>burg-auto-theft-busn-w-force</li>
+										<li>burglary-residence-no-force</li>
+										<li>burg-autp-theft-resd-no-force</li>
+										<li>burglary-business-no-force</li>
+										<li>burg-auto-theft-busn-no-force</li>
+										<li>burglary-poss-of-tools</li>
+										<li>burglary-other</li>
+									</ul>
+								</div>
+								<div style="width: 33%">
+									<b>Traffic Accident</b>
+									<ul>
+										<li>traffic-accident-hit-and-run</li>
+										<li>traffic-accident-dui-duid</li>
+										<li>traffic-accident</li>
+										<li>traffic-accident-sbi</li>
+										<li>traffic-accident-fatal</li>
+										<li>traffic-accident-police</li>
+									</ul>
+								</div>
+							</div>
+							<div style="margin-top: 30px" class="row gtr-uniform">
+								<div style="width: 33%">
+									<b>Theft from Motor Vehicle</b>
+									<ul>
+										<li>theft-parts-from-vehicle</li>
+										<li>theft-items-from-vehicle</li>
+										<li>theft-vehicle-strip</li>
+									</ul>
+								</div>
+								<div style="width: 33%">
+									<b>Auto Theft</b>
+									<ul>
+										<li>theft-stln-veh-const-eqpt</li>
+										<li>theft-stln-vehicle-trailer</li>
+										<li>theft-of-motor-vehicle</li>
+										<li>theft-of-motor-veh-joy-ride</li>
+									</ul>
+								</div>
+								<div style="width: 33%">
+									<b>All Other Crimes</b>
+									<ul>
+										<li>stolen-property-possession</li>
+										<li>fraud-possess-financial-device</li>
+										<li>sex-off-fail-to-register</li>
+										<li>sex-off-registration-viol</li>
+										<li>...</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Denver Police Department. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script>
+			  (g=>{
+			  		var h,a,k,p="The Google Maps JavaScript API", c="google", l="importLibrary", q="__ib__", m=document, b=window;
+			  		b=b[c]||(b[c]={});
+			  		var d=b.maps||(b.maps={}), r=new Set, e=new URLSearchParams,
+			  		u=()=>h||(h=new Promise(async(f,n)=>{
+			  			await (a=m.createElement("script"));
+			  			e.set("libraries",[...r]+"");
+			  			for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);
+			  			e.set("callback",c+".maps."+q);
+			  			a.src=`https://maps.${c}apis.com/maps/api/js?`+e;
+			  			d[q]=f;
+			  			a.onerror=()=>h=n(Error(p+" could not load."));
+			  			a.nonce=m.querySelector("script[nonce]")?.nonce||"";
+			  			m.head.append(a)
+			  		}));
+			  		d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))
+			  })
+			  ({
+					key: "AIzaSyCb34ehFI1Nh8lqYzB_m21USleJLnkcmWo",
+					v: "weekly"
+			  });
+			</script>
+			<script>
+				google.maps.importLibrary("maps");
+				google.maps.importLibrary("marker");
+			</script>
+			<script type="text/javascript">
+				let map;
+
+				var data = [];
+				var m = [];
+				var info_windows = [];
+				var offense_type_id_set = [];
+
+				$.get("http://192.168.1.112:8080/data", function(datav, status) {
+					data = JSON.parse(datav);
+					initMap();
+
+					for (let i = 0; i < data.length; i++) {
+						if (typeof data[i].reported_date !== 'undefined') {
+							date = data[i].reported_date.split(" ")[0];
+
+							month = date.split("/")[0];
+							day = date.split("/")[1];
+							year = date.split("/")[2];
+
+							if (parseInt(month) < 10) {
+								month = `0${month}`
+							}
+							if (parseInt(day) < 10) {
+								day = `0${day}`
+							}
+							date_format = `${year}-${month}-${day}`;
+							offense_type_id = data[i].offense_type_id;
+
+							check = true;
+							for(let k = 0; k < offense_type_id_set.length; k++) {
+								if (offense_type_id_set[k] === offense_type_id) {
+									check = false;
+									break;
+								}
+							}
+							if (check) offense_type_id_set.push(offense_type_id);
+						}
+					}
+
+					d = new Date(data[0].reported_date);
+
+					data.sort(function(a, b){
+						da = new Date(a.reported_date);
+						db = new Date(b.reported_date);
+						exit_number = 0;
+						if (da < db) {
+							exit_number = -1;
+						}
+						else {
+							exit_number = 1;
+						}
+						return exit_number;
+					});
+
+					$('#crime-select').append($('<option>', {
+						text: "All Crimes"
+					}));
+
+					for (let k = 0; k < offense_type_id_set.length; k++)
+					{
+						$('#crime-select').append($('<option>', {
+							text: offense_type_id_set[k]
+						}));
+					}
+				});
+
+				function initMap(markers) {
+					map = new google.maps.Map(document.getElementById("maps"), {
+						zoom: 10,
+						center: { lat: 39.7, lng: -105.0 },
+						mapId: "DEMO_MAP_ID"
+					});
+				}
+
+				function addMarker(mrk) {
+					position = new google.maps.LatLng(mrk.geo_lat, mrk.geo_lon);
+
+					const pin = new google.maps.marker.PinElement({
+						background: 'white'
+					});
+
+					const marker = new google.maps.marker.AdvancedMarkerElement({
+						position,
+						map,
+						content: pin.element
+					});
+
+					const contentString =
+						'<h2 style="color: black">Incident ID: '+mrk.incident_id+'</h2>' +
+						'<div>' +
+							'<ul>' +
+								'<li style="color: black">First Occurrence Date: <i>'+mrk.first_occurrence_date+'</i></li>' +
+								'<li style="color: black">Last Occurrence Date: <i>'+mrk.last_occurrence_date+'</i></li>' +
+								'<li style="color: black">Reported Date: <i>'+mrk.reported_date+'</i></li>' +
+								'<li style="color: black">District ID: <i>'+mrk.district_id+'</i></li>' +
+								'<li style="color: black">Incident Address: <i>'+mrk.incident_address+'</i></li>' +
+								'<li style="color: black">Neighborhood ID: <i>'+mrk.neighborhood_id+'</i></li>' +
+								'<li style="color: black">Offense Category Type: <i>'+mrk.offense_category_type+'</i></li>' +
+								'<li style="color: black">Offense Code: <i>'+mrk.offense_code+'</i></li>' +
+								'<li style="color: black">Offense Type ID: <i>'+mrk.offense_type_id+'</i></li>' +
+								'<li style="color: black">Is Traffic: <i>'+mrk.is_traffic+'</i></li>' +
+								'<li style="color: black">Is Crime: <i>'+mrk.is_crime+'</i></li>' +
+								'<li style="color: black">Victim Count: <i>'+mrk.victim_count+'</i></li>' +
+							'</ul>' +
+						'</div>'
+
+					const infow = new google.maps.InfoWindow({
+						content: contentString,
+						ariaLabel: 'Reported date'
+					});
+
+					info_windows.push(infow);
+
+					marker.addListener("click", () => {
+						map.setZoom(12);
+
+						for (let k = 0; k < info_windows.length; k++) {
+							if (info_windows[k].isOpen) {
+								info_windows[k].close();
+							}
+						}
+
+						infow.open(map, anchor=marker);
+						infow.focus();
+					});
+
+					m.push(marker);
+				}
+
+				function setMapOnAll(map) {
+					for (let i = 0; i < m.length; i++) {
+						m[i].setMap(map);
+					}
+				}
+
+				function hideMarkers() {
+					setMapOnAll(null);
+				}
+
+				function showMarkers() {
+					setMapOnAll(map);
+				}
+
+				function deleteMarkers() {
+					hideMarkers();
+					m = [];
+				}
+
+				function updateMap() {
+					var selected_option = $('#crime-select option').filter(':selected').text();
+					var date_start = document.getElementById('date-start').value;
+					var date_end = document.getElementById('date-end').value;
+
+					d1 = new Date(date_start);
+					d2 = new Date(date_end);
+
+					if (d1 > d2) {
+						d2 = d1;
+						document.getElementById('date-end').value = date_start;
+						date_end = date_start;
+					}
+
+					d1.setHours(0, 0, 0);
+					d2.setHours(23, 59, 59);
+
+					deleteMarkers();
+
+					// algoritmo di bisezione
+					sup = data.length;
+					inf = 0;
+					j = Math.ceil(sup / 2);
+
+					dj = new Date(data[j].reported_date);
+
+					j_prev = j;
+
+					while(dj < d1 || dj > d2) {
+						if (dj > d2) {
+							sup = j;
+							j = Math.ceil((j + inf) / 2);
+						}
+						else
+						{
+							inf = j;
+							j = Math.ceil((j + sup) / 2);
+						}
+						dj = new Date(data[j].reported_date);
+
+						if (j === j_prev) {
+							break;
+						}
+						else {
+							j_prev = j;
+						}
+					}
+					i = j;
+					s = j;
+					while (true) {
+						i--;
+						di = new Date(data[i].reported_date);
+						if (di < d1) {
+							i++;
+							break;
+						}
+					}
+					while (true) {
+						s++;
+						ds = new Date(data[s].reported_date);
+						if (ds > d2) {
+							s--;
+							break;
+						}
+					}
+
+					for (let k = i; k <= s; k++) {
+						d = new Date(data[k].reported_date);
+
+						if (d >= d1 && d <= d2) {
+							if (data[k].offense_type_id === selected_option || selected_option === "All Crimes") {
+								addMarker(data[k]);
+							}
+						}
+					}
+				}
+			</script>
+
+	</body>
+</html>

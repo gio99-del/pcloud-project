@@ -1,0 +1,9 @@
+runtime: python37
+
+handlers:
+  - url: '/.*'
+    secure: always
+    script: auto
+
+automatic_scaling:
+  - max_istances: 1
