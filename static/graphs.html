@@ -349,13 +349,14 @@
 			<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 			<script type="text/javascript">
 
-				var dict = {}
+				var dict = {};
 
-				$.get("http://192.168.1.160:8080/data", function(datav, status) {
+				$.get("https://oceanic-throne-435807-j7.oa.r.appspot.com/data", function(datav, status) {
 					datav = JSON.parse(datav);
 
 					for (let i = 0; i < datav.length; i++) {
-						if (typeof datav[i].reported_date !== 'undefined') {
+						if (typeof datav[i].reported_date !== 'undefined') 
+						{
 							date = datav[i].reported_date.split(" ")[0];
 
 							month = date.split("/")[0];
@@ -364,31 +365,35 @@
 
 							offense_type_id = datav[i].offense_type_id;
 
-							if (typeof dict[offense_type_id] === 'undefined') {
-								dict[offense_type_id] = {}
+							if (typeof dict[offense_type_id] === 'undefined') 
+							{
+								dict[offense_type_id] = {};
 							}
-							if (typeof dict[offense_type_id][year] === 'undefined') {
-								dict[offense_type_id][year] = {}
-								dict[offense_type_id][year]["total"] = 0
+							if (typeof dict[offense_type_id][year] === 'undefined') 
+							{
+								dict[offense_type_id][year] = {};
+								dict[offense_type_id][year]["total"] = 0;
 							}
 
-							if (isNaN(dict[offense_type_id][year][month])) {
-								dict[offense_type_id][year][month] = 1
+							if (isNaN(dict[offense_type_id][year][month])) 
+							{
+								dict[offense_type_id][year][month] = 1;
 							}
-							else {
-								dict[offense_type_id][year][month]++
+							else 
+							{
+								dict[offense_type_id][year][month]++;
 							}
-							dict[offense_type_id][year]["total"]++
+							dict[offense_type_id][year]["total"]++;
 						}
 					}
 
-					$('#crime-select').append($('<option>', {
-							text: "All Crimes"
-						}));
+					$('#crime-select').append($('<option>', { 
+						text: "All Crimes"
+					}));
 					for (let k = 0; k < Object.keys(dict).length; k++)
 					{
-						$('#crime-select').append($('<option>', {
-							text: Object.keys(dict)[k]
+						$('#crime-select').append($('<option>', { 
+							text: Object.keys(dict)[k] 
 						}));
 					}
 				})
@@ -397,8 +402,7 @@
 
 					var selected_option = $('#crime-select option').filter(':selected').text();
 
-					$('#year-select').attr("disabled", false);
-
+					document.getElementById('year-select').disabled = false;
 					document.getElementById('year-select').innerText = null;
 
 					$('#year-select').append($('<option>', {
@@ -408,13 +412,14 @@
 					}));
 
 					$('#year-select').append($('<option>', {
-							text: "Total"
-						}));
+						text: "Total"
+					}));
 
 					var years = [];
 					var is_all_crimes;
 					var sup;
-					if (selected_option === "All Crimes") {
+					if (selected_option === "All Crimes") 
+					{
 						is_all_crimes = true;
 						sup = Object.keys(dict).length;
 					}
@@ -425,7 +430,8 @@
 						option = selected_option;
 					}
 					for (let j = 0; j < sup; j++) {
-						if (is_all_crimes) {
+						if (is_all_crimes) 
+						{
 							option = Object.keys(dict)[j];
 						}
 						for (let k = 0; k < Object.keys(dict[option]).length; k++)
@@ -450,7 +456,8 @@
 					var selected_option = $('#crime-select option').filter(':selected').text();
 					var selected_year = $('#year-select option').filter(':selected').text();
 
-					function drawBasic() {
+					function drawBasic() 
+					{
 						var data = new google.visualization.DataTable();
 						data.addColumn('string', 'Month');
 						data.addColumn('number', 'Crimes');
@@ -551,9 +558,9 @@
 									{
 										option = Object.keys(dict)[j];
 									}
-									value += dict[option][selected_year][k]
+									value += dict[option][selected_year][k];
 								}
-								data.addRow([text, value])
+								data.addRow([text, value]);
 							}
 						}
 
