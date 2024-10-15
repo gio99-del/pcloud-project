@@ -386,26 +386,32 @@
 					data = JSON.parse(datav);
 					initMap();
 
-					for (let i = 0; i < data.length; i++) {
-						if (typeof data[i].reported_date !== 'undefined') {
+					for (let i = 0; i < data.length; i++) 
+					{
+						if (typeof data[i].reported_date !== 'undefined') 
+						{
 							date = data[i].reported_date.split(" ")[0];
 
 							month = date.split("/")[0];
 							day = date.split("/")[1];
 							year = date.split("/")[2];
 
-							if (parseInt(month) < 10) {
+							if (parseInt(month) < 10) 
+							{
 								month = `0${month}`
 							}
-							if (parseInt(day) < 10) {
+							if (parseInt(day) < 10) 
+							{
 								day = `0${day}`
 							}
 							date_format = `${year}-${month}-${day}`;
 							offense_type_id = data[i].offense_type_id;
 
 							check = true;
-							for(let k = 0; k < offense_type_id_set.length; k++) {
-								if (offense_type_id_set[k] === offense_type_id) {
+							for(let k = 0; k < offense_type_id_set.length; k++) 
+							{
+								if (offense_type_id_set[k] === offense_type_id) 
+								{
 									check = false;
 									break;
 								}
@@ -420,10 +426,12 @@
 						da = new Date(a.reported_date);
 						db = new Date(b.reported_date);
 						exit_number = 0;
-						if (da < db) {
+						if (da < db) 
+						{
 							exit_number = -1;
 						}
-						else {
+						else 
+						{
 							exit_number = 1;
 						}
 						return exit_number;
@@ -505,7 +513,8 @@
 				}
 
 				function setMapOnAll(map) {
-					for (let i = 0; i < m.length; i++) {
+					for (let i = 0; i < m.length; i++) 
+					{
 						m[i].setMap(map);
 					}
 				}
@@ -531,7 +540,8 @@
 					d1 = new Date(date_start);
 					d2 = new Date(date_end);
 
-					if (d1 > d2) {
+					if (d1 > d2) 
+					{
 						d2 = d1;
 						document.getElementById('date-end').value = date_start;
 						date_end = date_start;
@@ -542,7 +552,7 @@
 
 					deleteMarkers();
 
-					// algoritmo di bisezione
+					// Algoritmo di bisezione
 					sup = data.length;
 					inf = 0;
 					j = Math.ceil(sup / 2);
@@ -551,8 +561,10 @@
 
 					j_prev = j;
 
-					while(dj < d1 || dj > d2) {
-						if (dj > d2) {
+					while(dj < d1 || dj > d2) 
+					{
+						if (dj > d2) 
+						{
 							sup = j;
 							j = Math.ceil((j + inf) / 2);
 						}
@@ -563,37 +575,46 @@
 						}
 						dj = new Date(data[j].reported_date);
 
-						if (j === j_prev) {
+						if (j === j_prev) 
+						{
 							break;
 						}
-						else {
+						else 
+						{
 							j_prev = j;
 						}
 					}
 					i = j;
 					s = j;
-					while (true) {
+					while (true) 
+					{
 						i--;
 						di = new Date(data[i].reported_date);
-						if (di < d1) {
+						if (di < d1) 
+						{
 							i++;
 							break;
 						}
 					}
-					while (true) {
+					while (true) 
+					{
 						s++;
 						ds = new Date(data[s].reported_date);
-						if (ds > d2) {
+						if (ds > d2) 
+						{
 							s--;
 							break;
 						}
 					}
 
-					for (let k = i; k <= s; k++) {
+					for (let k = i; k <= s; k++) 
+					{
 						d = new Date(data[k].reported_date);
 
-						if (d >= d1 && d <= d2) {
-							if (data[k].offense_type_id === selected_option || selected_option === "All Crimes") {
+						if (d >= d1 && d <= d2) 
+						{
+							if (data[k].offense_type_id === selected_option || selected_option === "All Crimes")
+							{
 								addMarker(data[k]);
 							}
 						}
