@@ -2,8 +2,6 @@ crime.csv
 
 offense_codes.csv
 
-client.py
-
 client_info.py
 
 credentials.json
