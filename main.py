@@ -43,12 +43,14 @@ def load_user(username):
 def root():
     if current_user.is_authenticated:
         return redirect(url_for('static', filename='index.html'))
-    return redirect('static/login.html')
+    return redirect(url_for('static', filename='login.html'))
 
 
 @app.route('/client', methods=['GET'])
 def client():
     db_len = 0
+    # Calling 'db_length' document, the database query is only one.
+    # Otherwise is necessary to count every document in the database, so n queries.
     try:
         doc_ref = db.collection(coll).document('db_length')
         doc = doc_ref.get().to_dict()
@@ -74,7 +76,7 @@ def login():
         login_user(User(username))
         next_page = '/main'
         return redirect(next_page)
-    return redirect('/static/login.html')
+    return redirect(url_for('static', filename='login.html'))
 
 
 @app.route('/logout', methods=['GET', 'POST'])
@@ -86,16 +88,11 @@ def logout():
 
 @app.route('/data', methods=['GET', 'POST'])
 def data():
-    print('eccoci')
     if request.method == 'GET':
-        print('get call')
         r = []
-        print(db)
         for entity in db.collection(coll).stream():
-            print('entity')
             if not entity.id == 'db_length':
-                en = entity.to_dict()
-                r.append(en)
+                r.append(entity.to_dict())
         return json.dumps(r), 200
     else:
         dct = request.values
