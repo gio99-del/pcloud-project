@@ -22,7 +22,6 @@ login_manager = LoginManager(app)
 # By default, when a user attempts to access a login_required view without being logged in, Flask-Login will flash a
 # message and redirect them to the log in view
 login_manager.login_view = '/static/login.html'
-login_manager.login_message = "Non è stato possibile accedere alla pagina. Effettuare il login."
 
 db = firestore.Client.from_service_account_json('credentials.json', database='pcloud')
 coll = 'Denver Crime Data'
@@ -63,26 +62,8 @@ def client():
 
 @app.route('/main', methods=['GET', 'POST'])
 @login_required
-def main():
-    return redirect(url_for('static', filename='index.html'))
-
-
-@app.route('/static/index.html', methods=['GET', 'POST'])
-@login_required
 def index():
     return redirect(url_for('static', filename='index.html'))
-
-
-@app.route('/static/graphs.html', methods=['GET', 'POST'])
-@login_required
-def graphs():
-    return redirect(url_for('static', filename='graphs.html'))
-
-
-@app.route('/static/maps.html', methods=['GET', 'POST'])
-@login_required
-def maps():
-    return redirect(url_for('static', filename='maps.html'))
 
 
 @app.route('/login', methods=['POST'])
