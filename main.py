@@ -63,7 +63,7 @@ def client():
 
 @app.route('/main', methods=['GET', 'POST'])
 @login_required
-def index():
+def main():
     return redirect(url_for('static', filename='index.html'))
 
 
@@ -75,13 +75,13 @@ def index():
 
 @app.route('/static/graphs.html', methods=['GET', 'POST'])
 @login_required
-def index():
+def graphs():
     return redirect(url_for('static', filename='graphs.html'))
 
 
 @app.route('/static/maps.html', methods=['GET', 'POST'])
 @login_required
-def index():
+def maps():
     return redirect(url_for('static', filename='maps.html'))
 
 
