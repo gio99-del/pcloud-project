@@ -60,7 +60,7 @@ def client():
     return str(db_len)
 
 
-@app.route('/main', methods=['GET', 'POST'])
+@app.route('/static/index.html', methods=['GET', 'POST'])
 @login_required
 def index():
     return redirect(url_for('static', filename='index.html'))
@@ -74,7 +74,7 @@ def login():
     password = request.values['pass']
     if username in userdb and password == userdb[username]:
         login_user(User(username))
-        next_page = '/main'
+        next_page = '/static/index.html'
         return redirect(next_page)
     return redirect(url_for('static', filename='login.html'))
 
