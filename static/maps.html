@@ -390,21 +390,6 @@
 					{
 						if (typeof data[i].reported_date !== 'undefined') 
 						{
-							date = data[i].reported_date.split(" ")[0];
-
-							month = date.split("/")[0];
-							day = date.split("/")[1];
-							year = date.split("/")[2];
-
-							if (parseInt(month) < 10) 
-							{
-								month = `0${month}`
-							}
-							if (parseInt(day) < 10) 
-							{
-								day = `0${day}`
-							}
-							date_format = `${year}-${month}-${day}`;
 							offense_type_id = data[i].offense_type_id;
 
 							check = true;
@@ -419,8 +404,6 @@
 							if (check) offense_type_id_set.push(offense_type_id);
 						}
 					}
-
-					d = new Date(data[0].reported_date);
 
 					data.sort(function(a, b){
 						da = new Date(a.reported_date);
